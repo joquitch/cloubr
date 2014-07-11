@@ -1,0 +1,11 @@
+<section class="post">
+	<form>
+		<label>Username</label>
+		<input type="text" placeholder="Username" ng-model="register.username">
+		<label>Password</label>
+		<input type="password" placeholder="Password" ng-model="register.password">
+		<label >Password Confirmation</label>
+		<input type="password" placeholder="Password" ng-model="register.passwordConfirmation">
+		<button type="submit" ng-click="register(register.username, register.password, register.passwordConfirmation)">Register</button>
+	</form>
+</section>
