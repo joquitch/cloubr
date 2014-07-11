@@ -13,7 +13,7 @@ routes.employees = require('./routes/employees.js');
 routes.users = require('./routes/users.js');
 
 app.use(bodyParser());          // pull information from html in POST
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '/client')));
 app.use(methodOverride());      // simulate DELETE and PUT
 
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
