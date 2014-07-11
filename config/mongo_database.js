@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var SALT_WORK_FACTOR = 10;
-var mongodbURL = 'mongodb://localhost/cloubr';
+var mongodbURL = 'mongodb://admin:västtrafik@kahana.mongohq.com:10050/app27323423'; //'mongodb://localhost/cloubr';
 var mongodbOptions = { };
 
 mongoose.connect(mongodbURL, mongodbOptions, function (err, res) {
