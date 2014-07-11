@@ -2,7 +2,7 @@
 
 var options = {};
 options.api = {};
-options.api.base_url = "http://localhost:5000";
+options.api.base_url = "http://frozen-stream-3247.herokuapp.com";
 
 angular.module('myApp', [
     'ngTouch',
