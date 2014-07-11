@@ -1,0 +1,23 @@
+{
+  "name": "cloubr",
+  "version": "0.0.0",
+  "description": "This is Cloubr!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joquitch/cloubr.git"
+  },
+  "keywords": [
+    "cloubr",
+    "brainstorm"
+  ],
+  "author": "joquitch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joquitch/cloubr/issues"
+  },
+  "homepage": "https://github.com/joquitch/cloubr"
+}

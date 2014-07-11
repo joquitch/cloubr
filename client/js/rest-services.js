@@ -3,12 +3,12 @@
 angular.module('myApp.restServices', ['ngResource'])
     .factory('Employee', ['$resource',
         function ($resource) {
-            return $resource('http://localhost:5000/employees/:employeeId', {});
+            return $resource( options.api.base_url + '/employees/:employeeId', {});
         }])
 
     .factory('Report', ['$resource',
         function ($resource) {
-            return $resource('http://localhost:5000/employees/:employeeId/reports', {});
+            return $resource( options.api.base_url + '/employees/:employeeId/reports', {});
         }])
 		
 	.factory('AuthenticationService',
@@ -21,15 +21,15 @@ angular.module('myApp.restServices', ['ngResource'])
 		function($http) {
 			return {
 				signIn: function(username, password) {
-					return $http.post('http://localhost:5000/signin', {username: username, password: password});
+					return $http.post( options.api.base_url + '/signin', {username: username, password: password});
 				},
 
 				logOut: function() {
-					return $http.get('http://localhost:5000/logout');
+					return $http.get( options.api.base_url + '/logout');
 				},
 
 				register: function(username, password, passwordConfirmation) {
-					return $http.post('http://localhost:5000/register', {username: username, password: password, passwordConfirmation: passwordConfirmation });
+					return $http.post( options.api.base_url + '/register', {username: username, password: password, passwordConfirmation: passwordConfirmation });
 				}
 			}
 		}])

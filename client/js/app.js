@@ -1,5 +1,9 @@
 'use strict';
 
+var options = {};
+options.api = {};
+options.api.base_url = "http://localhost:5000";
+
 angular.module('myApp', [
     'ngTouch',
     'ngRoute',
@@ -7,6 +11,7 @@ angular.module('myApp', [
     'myApp.controllers',
     'myApp.restServices'
 ]).
+
 config(['$routeProvider', function ($routeProvider) {
     $routeProvider
 		.when('/employees', {
