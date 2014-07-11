@@ -35,7 +35,11 @@ User.pre('save', function(next) {
     if (err) return next(err);
 
     bcrypt.hash(user.password, salt, function(){console.log('hash in progress...')}, function(err, hash) {
-        if (err) return next(err);
+        if (err){
+			console.log('hash failed.')
+			return next(err);
+		}
+		console.log('hash succeeded.')
         user.password = hash;
         next();
     });
