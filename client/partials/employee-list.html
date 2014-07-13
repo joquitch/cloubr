@@ -10,7 +10,7 @@
     <ul class="topcoat-list list">
         <li ng-repeat="employee in employees | filter:query | orderBy:orderProp" class="topcoat-list__item">
             <a ng-click="go('/employees/' + employee.id)">
-                <img ng-src="~/pics/{{employee.pic}}">
+                <img ng-src="{{employee.pic}}">
                 <p>{{employee.firstName}} {{employee.lastName}}</p>
                 <p>{{employee.title}}</p>
                 <span class="chevron"></span><span class="count">{{employee.reports}}</span>
