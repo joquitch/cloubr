@@ -38,11 +38,6 @@ config(['$routeProvider', function ($routeProvider) {
             controller: 'UserCtrl'
         })
 		
-        .when('/login', {
-            templateUrl: 'partials/signin.html',
-            controller: 'UserCtrl'
-        })
-		
         .when('/logout', {
             templateUrl: 'partials/logout.html',
             controller: 'UserCtrl',
@@ -64,7 +59,7 @@ config(['$routeProvider', function ($routeProvider) {
         if (nextRoute != null && nextRoute.access != null && nextRoute.access.requiredAuthentication 
             && !AuthenticationService.isAuthenticated && !$window.sessionStorage.token) {
 
-            $location.path("/login");
+            $location.path("/register");
         }
     });
 });;

@@ -30,7 +30,13 @@ angular.module('myApp.controllers', [])
 	
 	.controller('UserCtrl', ['$scope', '$location', '$window', 'UserService', 'AuthenticationService',
 		function UserCtrl($scope, $location, $window, UserService, AuthenticationService) {
-	 
+			$scope.tabs = ['register', 'login'];
+			$scope.currentTab = 'register';
+			$scope.setCurrentTab = function (tab) {
+				$scope.currentTab = tab;
+			}
+			
+			
 			//Admin User Controller (signIn, logOut)
 			$scope.signIn = function signIn(username, password) {
 				if (username != null && password != null) {

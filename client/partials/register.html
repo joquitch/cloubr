@@ -1,11 +1,183 @@
+
 <section class="post">
-	<form>
-		<label>Username</label>
-		<input type="text" placeholder="Username" ng-model="register.username">
-		<label>Password</label>
-		<input type="password" placeholder="Password" ng-model="register.password">
-		<label >Password Confirmation</label>
-		<input type="password" placeholder="Password" ng-model="register.passwordConfirmation">
-		<button type="submit" ng-click="register(register.username, register.password, register.passwordConfirmation)">Register</button>
-	</form>
+	<div class="header">
+		Cloubr™
+		<div ng-switch on="currentTab">
+			<button class="block headerButton" type="submit" ng-click="register(register.username, register.password, register.passwordConfirmation)"ng-switch-when="register">Register</button>
+			<button class="block headerButton" type="submit" ng-click="signIn(register.username, register.password)" ng-switch-when="login">Login</button>
+		</div>
+	</div>
+
+	<ul class="tabs">
+		<li class="tab" ng-repeat="tab in tabs" ng-class="{active:(tab == currentTab)}" ng-click="setCurrentTab(tab)">{{tab}}</li>
+	</ul>
+	<div class="content" ng-switch on="currentTab">
+		<form novalidate class="css-form blockWhite" ng-switch-when="register">
+			<label class="block no-bottom">Username</label>
+			<input class="block" type="text" placeholder="Username" ng-model="register.username" required>
+			<label class="block no-bottom" >Password1</label>
+			<input class="block" type="password" placeholder="Password" ng-model="register.password" required>
+			<label class="block no-bottom">Password Confirmation</label>
+			<input class="block" type="password" placeholder="Password" ng-model="register.passwordConfirmation" required>
+		</form>
+		
+		<form novalidate class="css-form blockWhite" ng-switch-when="login">
+			<label class="block no-bottom">Username</label>
+			<input class="block" type="text" placeholder="Username" ng-model="register.username" required>
+			<label class="block no-bottom" >Password1</label>
+			<input class="block" type="password" placeholder="Password" ng-model="register.password" required>
+		</form>
+	</div>
 </section>
+
+<style type="text/css">
+	*{
+		transition: 500ms;
+		font-family: Quicksand;
+		box-sizing: border-box;
+	}
+	
+	label{
+		display: none !important;
+	}
+
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.header{
+		position: absolute;
+		top: 0px;
+		width: 100%;
+		padding-left: 51px;
+		height: 56px;
+		line-height: 56px;
+		font-size: 18px;
+		background: white;
+		border-bottom: 1px solid #eee;
+	}
+	
+	.headerButton{
+		position: absolute;
+		top: 4px;
+		right: 4px;
+		border: none;
+		background: #3498db;
+		color: white;
+		height: 40px;
+		padding: 0px 16px 0px 16px !important;
+		
+	}
+	
+	.header:before{
+		content: '';
+		background: transparent url(css/images/cloubr-logo.png);
+		position: absolute;
+		width: 35px;
+		height: 27px;
+		top: 13px;
+		left: 8px;
+	}
+	
+	.tabs{
+		position: absolute;
+		top: 57px;
+		width: 100%;
+	}
+	
+	.tabs:before{
+		content: '';
+		position: absolute;
+		bottom: -2px;
+		background: black;
+		opacity: 0.1;
+		height: 2px;
+		width: 100%;
+	}
+	
+	.tab{
+		position: relative;
+		float: left;
+		height: 56px;
+		background: white;
+		width: calc( 50% - 0.5px);
+		text-align: center;
+		line-height: 56px;
+		border-left: 1px solid #aaa;
+		text-transform:uppercase;
+		font-size: 18px;
+	}
+	
+	.tab:first-child{
+		border: none;
+	}
+	
+	.active:before{
+		content: '';
+		background: #3498db;
+		height: 4px;
+		width: 100%;
+		position: absolute;
+		left: 0px;
+		bottom: 0px;		
+	}
+	
+	.content{
+		position: absolute;
+		width: 100%;
+		top: 112px;
+		padding: 4px;
+	}
+
+	input{
+		width: calc(100% - 8px);
+		margin: 0px;
+		padding: 0px;
+		border: 1px solid #ddd;
+		transition: 500ms;
+		min-height: 40px;
+		
+	}
+	
+	input:focus{
+		border-color: #3498db;
+	}
+	
+	label{
+		padding: 0px;
+	}
+	
+	 .blockWhite, .block{
+		margin: 4px;
+		padding: 4px;
+		display: block;
+		border-radius: 4px;
+		float: left;
+	}
+	
+	.blockWhite{
+		width: calc(100% - 8px);
+		background: white;
+	}
+	
+	.no-bottom{
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+	}
+	
+	.active{
+		color: #3498db;
+	}
+
+
+  .css-form input.ng-invalid.ng-dirty {
+    border-color: #e74c3c;
+  }
+
+  .css-form input.ng-valid.ng-dirty {
+    border-color: #2ecc71;
+  }
+</style>
