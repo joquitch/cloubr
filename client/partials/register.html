@@ -1,5 +1,5 @@
 
-<section class="post">
+<section class="post" ng-switch on="currentTab">
 	<div class="header">
 		Cloubr™
 		<div ng-switch on="currentTab">
@@ -11,28 +11,71 @@
 	<ul class="tabs">
 		<li class="tab" ng-repeat="tab in tabs" ng-class="{active:(tab == currentTab)}" ng-click="setCurrentTab(tab)">{{tab}}</li>
 	</ul>
-	<div class="content" ng-switch on="currentTab">
-		<form novalidate class="css-form blockWhite" ng-switch-when="register">
-			<label class="block no-bottom">Username</label>
-			<input class="block" type="text" placeholder="Username" ng-model="register.username" required>
-			<label class="block no-bottom" >Password1</label>
-			<input class="block" type="password" placeholder="Password" ng-model="register.password" required>
-			<label class="block no-bottom">Password Confirmation</label>
-			<input class="block" type="password" placeholder="Password" ng-model="register.passwordConfirmation" required>
-		</form>
-		
-		<form novalidate class="css-form blockWhite" ng-switch-when="login">
-			<label class="block no-bottom">Username</label>
-			<input class="block" type="text" placeholder="Username" ng-model="register.username" required>
-			<label class="block no-bottom" >Password1</label>
-			<input class="block" type="password" placeholder="Password" ng-model="register.password" required>
-		</form>
+	
+	<div ng-switch on="currentTab">
+		<div class="content left" ng-switch-when="register">
+			<form novalidate class="css-form blockWhite">
+				<label class="block no-bottom">Username</label>
+				<input class="block" type="text" placeholder="Username" ng-model="register.username" required>
+				<label class="block no-bottom" >Password1</label>
+				<input class="block" type="password" placeholder="Password" ng-model="register.password" required>
+				<label class="block no-bottom">Password Confirmation</label>
+				<input class="block" type="password" placeholder="Password" ng-model="register.passwordConfirmation" required>
+			</form>
+		</div>
+		<div class="content right" ng-switch-when="login">	
+			<form novalidate class="css-form blockWhite">
+				<label class="block no-bottom">Username</label>
+				<input class="block" type="text" placeholder="Username" ng-model="register.username" required>
+				<label class="block no-bottom" >Password1</label>
+				<input class="block" type="password" placeholder="Password" ng-model="register.password" required>
+			</form>
+		</div>
 	</div>
+	
 </section>
 
 <style type="text/css">
+	.left.ng-enter {
+		transition: 0.5s;
+		left: 100%;
+	}
+	
+	.left.ng-enter-active {
+		left: 0%;
+	}
+	 
+	.left.ng-leave {
+		transition: 0.5s;		
+		left: 0%;	
+	}
+	
+	.left.ng-leave-active {
+		left: 100%;
+	}
+	
+	
+	
+	.right.ng-enter {
+		transition: 0.5s;
+		left: -100%;
+	}
+	
+	.right.ng-enter-active {
+		left: 0%;
+	}
+	 
+	.right.ng-leave {
+		transition: 0.5s;		
+		left: 0%;	
+	}
+	
+	.right.ng-leave-active {
+		left: -100%;
+	}
+
+
 	*{
-		transition: 500ms;
 		font-family: Quicksand;
 		box-sizing: border-box;
 	}
@@ -49,7 +92,8 @@
 	}
 	
 	.header{
-		position: absolute;
+		z-index: 1;
+		position: fixed;
 		top: 0px;
 		width: 100%;
 		padding-left: 51px;
@@ -68,7 +112,7 @@
 		background: #3498db;
 		color: white;
 		height: 40px;
-		padding: 0px 16px 0px 16px !important;
+		width: 96px;
 		
 	}
 	
@@ -83,7 +127,8 @@
 	}
 	
 	.tabs{
-		position: absolute;
+		z-index: 1;
+		position: fixed;
 		top: 57px;
 		width: 100%;
 	}
@@ -102,13 +147,14 @@
 		position: relative;
 		float: left;
 		height: 56px;
-		background: white;
-		width: calc( 50% - 0.5px);
+		background: white;d
 		text-align: center;
 		line-height: 56px;
 		border-left: 1px solid #aaa;
 		text-transform:uppercase;
 		font-size: 18px;
+		width: 50%;
+		text-align: center;
 	}
 	
 	.tab:first-child{
@@ -129,21 +175,20 @@
 		position: absolute;
 		width: 100%;
 		top: 112px;
-		padding: 4px;
+		padding: 8px 16px;
 	}
 
 	input{
-		width: calc(100% - 8px);
-		margin: 0px;
-		padding: 0px;
-		border: 1px solid #ddd;
-		transition: 500ms;
+		margin: 4px 0px;
+		border: none;
+		box-shadow: 0px 0px 2px 1px #ddd inset;
 		min-height: 40px;
+		width: 100%;
 		
 	}
 	
 	input:focus{
-		border-color: #3498db;
+		box-shadow: 0px 0px 2px 1px #3498db inset;
 	}
 	
 	label{
@@ -151,15 +196,11 @@
 	}
 	
 	 .blockWhite, .block{
-		margin: 4px;
-		padding: 4px;
-		display: block;
 		border-radius: 4px;
-		float: left;
+		padding: 4px 8px;
 	}
 	
 	.blockWhite{
-		width: calc(100% - 8px);
 		background: white;
 	}
 	
@@ -171,13 +212,15 @@
 	.active{
 		color: #3498db;
 	}
+	 
+	
 
 
   .css-form input.ng-invalid.ng-dirty {
-    border-color: #e74c3c;
+    box-shadow: 0px 0px 2px 1px #e74c3c inset;
   }
 
   .css-form input.ng-valid.ng-dirty {
-    border-color: #2ecc71;
+    box-shadow: 0px 0px 2px 1px #2ecc71 inset;
   }
 </style>
