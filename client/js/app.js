@@ -15,9 +15,9 @@ angular.module('myApp', [
 
 config(['$routeProvider', function ($routeProvider) {
     $routeProvider
-		.when('/employees', {
-			templateUrl: 'partials/employee-list.html',
-			controller: 'EmployeeListCtrl',
+		.when('/overview', {
+			templateUrl: 'partials/overview.html',
+			controller: 'UserCtrl',
 			access: { requiredAuthentication: true }
 		})
 		
@@ -45,7 +45,7 @@ config(['$routeProvider', function ($routeProvider) {
         })
 		
 		.otherwise({
-			redirectTo: '/employees'
+			redirectTo: '/overview'
 		});
 }])
 
