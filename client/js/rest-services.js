@@ -34,10 +34,11 @@ angular.module('myApp.restServices', ['ngResource'])
 			}
 		}])
 		
-	.factory('TokenInterceptor', ['$q', '$window', '$location', 'AuthenticationService',
-		function ($q, $window, $location, AuthenticationService) {
+	.factory('TokenInterceptor', ['$rootScope', '$q', '$window', '$location', 'AuthenticationService',
+		function ($rootScope, $q, $window, $location, AuthenticationService) {
 			return {
 				request: function (config) {
+					$rootScope.loading = true;
 					config.headers = config.headers || {};
 					if ($window.sessionStorage.token) {
 						config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
@@ -46,11 +47,13 @@ angular.module('myApp.restServices', ['ngResource'])
 				},
 
 				requestError: function(rejection) {
+					$rootScope.loading = false;
 					return $q.reject(rejection);
 				},
 
 				/* Set Authentication.isAuthenticated to true if 200 received */
 				response: function (response) {
+					$rootScope.loading = false;
 					if (response != null && response.status == 200 && $window.sessionStorage.token && !AuthenticationService.isAuthenticated) {
 						AuthenticationService.isAuthenticated = true;
 					}
@@ -59,6 +62,7 @@ angular.module('myApp.restServices', ['ngResource'])
 
 				/* Revoke client authentication if 401 is received */
 				responseError: function(rejection) {
+					$rootScope.loading = false;
 					if (rejection != null && rejection.status === 401 && ($window.sessionStorage.token || AuthenticationService.isAuthenticated)) {
 						delete $window.sessionStorage.token;
 						AuthenticationService.isAuthenticated = false;

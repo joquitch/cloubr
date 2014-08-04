@@ -2,10 +2,6 @@
 <section class="post" ng-switch on="currentTab">
 	<div class="header">
 		Cloubr™
-		<div ng-switch on="currentTab">
-			<button class="block headerButton" type="submit" ng-click="register(register.username, register.password, register.passwordConfirmation)"ng-switch-when="register">Register</button>
-			<button class="block headerButton" type="submit" ng-click="signIn(register.username, register.password)" ng-switch-when="login">Login</button>
-		</div>
 	</div>
 
 	<ul class="tabs">
@@ -13,64 +9,71 @@
 	</ul>
 	
 	<div ng-switch on="currentTab">
-		<div class="content left" ng-switch-when="register">
+		<div class="content rightAnimation" ng-switch-when="I'm new">
 			<form novalidate class="css-form blockWhite">
-				<label class="block no-bottom">Username</label>
 				<input class="block" type="text" placeholder="Username" ng-model="register.username" required>
-				<label class="block no-bottom" >Password1</label>
 				<input class="block" type="password" placeholder="Password" ng-model="register.password" required>
-				<label class="block no-bottom">Password Confirmation</label>
-				<input class="block" type="password" placeholder="Password" ng-model="register.passwordConfirmation" required>
+				<input class="block" type="password" placeholder="Password again" ng-model="register.passwordConfirmation" required>
+				<button class="right" type="submit" ng-click="register(register.username, register.password, register.passwordConfirmation)">Register</button>
 			</form>
 		</div>
-		<div class="content right" ng-switch-when="login">	
+		<div class="content leftAnimation" ng-switch-when="Sign in">	
 			<form novalidate class="css-form blockWhite">
-				<label class="block no-bottom">Username</label>
 				<input class="block" type="text" placeholder="Username" ng-model="register.username" required>
-				<label class="block no-bottom" >Password1</label>
 				<input class="block" type="password" placeholder="Password" ng-model="register.password" required>
+				<button class="right" type="submit" ng-click="signIn(register.username, register.password)">Sign In</button>
 			</form>
 		</div>
-	</div>
-	
+	</div>	
 </section>
 
 <style type="text/css">
-	.left.ng-enter {
-		transition: 0.5s;
+	html{
+		background: #2980b9;
+	}
+	
+	body{
+		margin: 0;
+		overflow: hidden;
+		height: 100vh;
+		-webkit-user-select: none;
+	}
+	
+	.leftAnimation.ng-enter {
+		transition: 0.2s ease;
 		left: 100%;
 	}
 	
-	.left.ng-enter-active {
+	.leftAnimation.ng-enter-active {
 		left: 0%;
 	}
 	 
-	.left.ng-leave {
-		transition: 0.5s;		
+	.leftAnimation.ng-leave {
+		transition: 0.2s ease;		
 		left: 0%;	
 	}
 	
-	.left.ng-leave-active {
+	.leftAnimation.ng-leave-active {
 		left: 100%;
 	}
 	
 	
 	
-	.right.ng-enter {
-		transition: 0.5s;
+	.rightAnimation.ng-enter {
+		transition: 0.2s ease;
 		left: -100%;
 	}
 	
-	.right.ng-enter-active {
+	.rightAnimation.ng-enter-active {
 		left: 0%;
 	}
 	 
-	.right.ng-leave {
-		transition: 0.5s;		
+	.rightAnimation.ng-leave {
+		transition: 0.2s ease;		
 		left: 0%;	
 	}
 	
-	.right.ng-leave-active {
+	.rightAnimation.ng-leave-active {
 		left: -100%;
 	}
 
@@ -78,12 +81,12 @@
 	*{
 		font-family: Quicksand;
 		box-sizing: border-box;
+		text-rendering: optimizeLegibility;
+		-webkit-tap-highlight-color: transparent;
+		-webkit-overflow-scrolling: touch;
+		
+		-webkit-touch-callout: none;
 	}
-	
-	label{
-		display: none !important;
-	}
-
 
 	ul {
 		list-style: none;
@@ -92,93 +95,92 @@
 	}
 	
 	.header{
-		z-index: 1;
+		z-index: 2;
 		position: fixed;
 		top: 0px;
 		width: 100%;
 		padding-left: 51px;
-		height: 56px;
-		line-height: 56px;
+		height: 48px;
+		line-height: 48px;
 		font-size: 18px;
 		background: white;
 		border-bottom: 1px solid #eee;
 	}
 	
-	.headerButton{
-		position: absolute;
-		top: 4px;
-		right: 4px;
+	.left{
+		float: left;
+	}
+	
+	.right{
+		float: right;
+	}
+	
+	button{
 		border: none;
 		background: #3498db;
 		color: white;
 		height: 40px;
 		width: 96px;
-		
+		margin: 4px 0px;
+		border-radius: 4px;
+	}
+	
+	button:active{
+		background: #2980b9;
 	}
 	
 	.header:before{
 		content: '';
-		background: transparent url(css/images/cloubr-logo.png);
+		background: transparent url(css/images/cloubr-logo.svg);
 		position: absolute;
-		width: 35px;
-		height: 27px;
-		top: 13px;
-		left: 8px;
+		width: 48px;
+		height: 48px;
+		background-size: 36px;
+		background-position: center;
+		background-repeat: no-repeat;
+		top: 0px;
+		left: 0px;
 	}
 	
 	.tabs{
 		z-index: 1;
 		position: fixed;
-		top: 57px;
+		top: 48px;
 		width: 100%;
-	}
-	
-	.tabs:before{
-		content: '';
-		position: absolute;
-		bottom: -2px;
-		background: black;
-		opacity: 0.1;
-		height: 2px;
-		width: 100%;
+		box-shadow: 0px 0px 5px 0px #2C2C2C;
 	}
 	
 	.tab{
 		position: relative;
 		float: left;
-		height: 56px;
+		height: 48px;
 		background: white;d
 		text-align: center;
-		line-height: 56px;
-		border-left: 1px solid #aaa;
-		text-transform:uppercase;
+		line-height: 48px;
+		border-left: 1px solid #eee;
+		text-transform: capitalize;
 		font-size: 18px;
 		width: 50%;
 		text-align: center;
+	}
+	
+	.tab:active{
+		background: #F0F9FD;
 	}
 	
 	.tab:first-child{
 		border: none;
 	}
 	
-	.active:before{
-		content: '';
-		background: #3498db;
-		height: 4px;
-		width: 100%;
-		position: absolute;
-		left: 0px;
-		bottom: 0px;		
-	}
-	
 	.content{
 		position: absolute;
 		width: 100%;
-		top: 112px;
-		padding: 8px 16px;
+		top: 96px;
+		padding: 16px;
 	}
 
 	input{
+		-webkit-user-select: text;
 		margin: 4px 0px;
 		border: none;
 		box-shadow: 0px 0px 2px 1px #ddd inset;
@@ -198,6 +200,7 @@
 	 .blockWhite, .block{
 		border-radius: 4px;
 		padding: 4px 8px;
+		overflow: hidden;
 	}
 	
 	.blockWhite{
@@ -211,9 +214,26 @@
 	
 	.active{
 		color: #3498db;
+		font-weight: bold;
+	}
+	
+	.disableLayer{
+		width: 100vw;
+		height: 100vh;
+		background: rgba(30, 30, 30, 0.1);
 	}
 	 
-	
+	.loader{
+		width: 100px;
+		height: 100px;
+		background: rgba(30, 30, 30, 0.6);
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-top: -50px;
+		margin-left: -50px;
+		
+	}
 
 
   .css-form input.ng-invalid.ng-dirty {

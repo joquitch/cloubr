@@ -30,8 +30,8 @@ angular.module('myApp.controllers', [])
 	
 	.controller('UserCtrl', ['$scope', '$location', '$window', 'UserService', 'AuthenticationService',
 		function UserCtrl($scope, $location, $window, UserService, AuthenticationService) {
-			$scope.tabs = ['register', 'login'];
-			$scope.currentTab = 'register';
+			$scope.tabs = ["I'm new", 'Sign in'];
+			$scope.currentTab = $scope.tabs[0];
 			$scope.setCurrentTab = function (tab) {
 				$scope.currentTab = tab;
 			}
