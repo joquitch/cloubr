@@ -22,7 +22,7 @@ angular.module('myApp.directives', [])
 			}
 		  },
 		  
-		  template: '<i class="menuIcon fa fa-bars"></i><div class="menu" style="display:none;"><ul class="menuList" ng-transclude></ul></div>'
+		  template: '<i class="menuIcon fa fa-ellipsis-v"></i><div class="menu" style="display:none;"><ul class="menuList" ng-transclude></ul></div>'
 		};
 	});
 	  
