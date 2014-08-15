@@ -10,14 +10,15 @@ angular.module('myApp', [
     'ngRoute',
     'ngAnimate',
     'myApp.controllers',
-    'myApp.restServices'
-]).
+    'myApp.restServices',
+    'myApp.directives'
+])
 
-config(['$routeProvider', function ($routeProvider) {
+.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
 		.when('/overview', {
 			templateUrl: 'partials/overview.html',
-			controller: 'UserCtrl',
+			controller: 'OverviewCtrl',
 			access: { requiredAuthentication: true }
 		})
 		
@@ -34,13 +35,11 @@ config(['$routeProvider', function ($routeProvider) {
 		})
 		
 		.when('/register', {
-            templateUrl: 'partials/register.html',
-            controller: 'UserCtrl'
+            templateUrl: 'partials/register.html'
         })
 		
         .when('/logout', {
             templateUrl: 'partials/logout.html',
-            controller: 'UserCtrl',
             access: { requiredAuthentication: true }
         })
 		
@@ -55,11 +54,15 @@ config(['$routeProvider', function ($routeProvider) {
 
 .run(function($rootScope, $location, $window, AuthenticationService) {
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
-        //redirect only if both isAuthenticated is false and no token is set
+        //FastClick(document.body);
+		
+		//redirect only if both isAuthenticated is false and no token is set
         if (nextRoute != null && nextRoute.access != null && nextRoute.access.requiredAuthentication 
             && !AuthenticationService.isAuthenticated && !$window.sessionStorage.token) {
 
             $location.path("/register");
         }
     });
-});;
+});
+
+

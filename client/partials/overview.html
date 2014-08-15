@@ -1,11 +1,10 @@
 <section class="post" ng-switch on="currentTab">
 	<div class="header">
 		Cloubr™
+		
+		<menu>
+			<li class="menuListItem" ng-repeat="menuItem in menuItems" ng-click="menuItem.onClick()">{{menuItem.text}}</li>
+		</menu>
 	</div>
 	
-	<div class="content rightAnimation" ng-switch-when="I'm new">
-		<form class="blockWhite" role="form">
-			<button type="submit" ng-click="logOut()">Log Out</button>
-		</form>
-	</div>
 </section>

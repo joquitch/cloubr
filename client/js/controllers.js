@@ -1,5 +1,5 @@
 'use strict';
-
+//new
 angular.module('myApp.controllers', [])
     .controller('MainCtrl', ['$scope', '$rootScope', '$window', '$location', function ($scope, $rootScope, $window, $location) {
         $scope.slide = '';
@@ -11,10 +11,13 @@ angular.module('myApp.controllers', [])
           $scope.slide = 'slide-left';
           $location.url(path);
         }
+		
     }])
-    .controller('EmployeeListCtrl', ['$scope', 'Employee',
-		function ($scope, Employee) {
-			$scope.employees = Employee.query();
+    .controller('OverviewCtrl', ['$scope', '$rootScope',
+		function ($scope, $rootScope) {
+			$scope.menuItems = [
+				{text: 'Log out', onClick: $rootScope.logOut}
+			];
 		}
 	])
     .controller('EmployeeDetailCtrl', ['$scope', '$routeParams', 'Employee',
@@ -28,8 +31,8 @@ angular.module('myApp.controllers', [])
 		}
 	])
 	
-	.controller('UserCtrl', ['$scope', '$location', '$window', 'UserService', 'AuthenticationService',
-		function UserCtrl($scope, $location, $window, UserService, AuthenticationService) {
+	.controller('UserCtrl', ['$scope', '$rootScope',  '$location', '$window', 'UserService', 'AuthenticationService',
+		function UserCtrl($scope, $rootScope, $location, $window, UserService, AuthenticationService) {
 			$scope.tabs = ["I'm new", 'Sign in'];
 			$scope.currentTab = $scope.tabs[0];
 			$scope.setCurrentTab = function (tab) {
@@ -52,7 +55,7 @@ angular.module('myApp.controllers', [])
 				}
 			}
 
-			$scope.logOut = function logOut() {
+			$rootScope.logOut = function logOut() {
 				if (AuthenticationService.isAuthenticated) {
 					
 					UserService.logOut().success(function(data) {
