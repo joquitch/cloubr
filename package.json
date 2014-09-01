@@ -1,5 +1,5 @@
 {
-  "name": "cloubr",
+  "name": "stratsys",
   "version": "0.0.0",
   "description": "This is Cloubr!",
   "main": "server.js",
@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/joquitch/cloubr.git"
+    "url": "https://stratsys.se"
   },
   "keywords": [
-    "cloubr",
+    "stratsys",
     "brainstorm"
   ],
   "author": "joquitch",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/joquitch/cloubr/issues"
+    "url": "https://stratsys.se"
   },
-  "homepage": "https://github.com/joquitch/cloubr"
+  "homepage": "https://stratsys.se"
 }
