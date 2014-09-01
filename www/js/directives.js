@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp.directives', [])
-	.directive('actionMenu', function($compile) {
+	.directive('crActionMenu', function($compile) {
 		return  {
 		  restrict: 'E',
 		  controllerAs: 'actionMenuCtrl',
@@ -28,12 +28,22 @@ angular.module('myApp.directives', [])
 			function toggleMenu(){				
 				$menu.toggle();
 				var $menuList = $menu.find('.menuList');
-				$menuList.css('margin-top', 24 - ($menuList.outerHeight() / 2));
-				
+				$menuList.css('margin-top', 24 - ($menuList.outerHeight() / 2));				
 			}
 		  },
 		  
-		  template: '<i class="menuIcon fa fa-ellipsis-v"></i><div class="menu" style="display:none;"><ul class="menuList"><li ng-repeat="action in actions" ng-click="actionMenuCtrl.handleClick(action)">{{action.text}}</li></ul></div>'
+		  template: '<i ng-if="actions.length" class="menuIcon fa fa-ellipsis-v"></i><div class="menu" style="display:none;"><ul class="menuList"><li class="menuListItem" ng-repeat="action in actions" ng-click="actionMenuCtrl.handleClick(action)">{{action.text}}</li></ul></div>'
+		};
+	})
+	.directive('crHeader', function() {
+		return  {
+		  restrict: 'E',
+		  replace: true,
+		  scope: {
+			actions: '=',
+			title: '@'
+		  },		  
+		  template: '<div class="header">{{title}}<cr-action-menu actions="actions"></cr-action-menu></div>'
 		};
 	});
 	  

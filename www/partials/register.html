@@ -1,8 +1,5 @@
-
 <section class="post" ng-switch on="currentTab">
-	<div class="header">
-		Cloubr™
-	</div>
+	<cr-header title="Cloubr" actions="menuActions"></cr-header>
 
 	<ul class="tabs">
 		<li class="tab" ng-repeat="tab in tabs" ng-class="{active:(tab == currentTab)}" ng-click="setCurrentTab(tab)">{{tab}}</li>
@@ -26,3 +23,4 @@
 		</div>
 	</div>	
 </section>
+
