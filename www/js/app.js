@@ -16,12 +16,7 @@ angular.module('myApp', [
 
 .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
-		.when('/overview', {
-			templateUrl: 'partials/overview.html',
-			controller: 'OverviewCtrl',
-			access: { requiredAuthentication: true }
-		})
-		
+			
 		.when('/employees/:employeeId', {
 			templateUrl: 'partials/employee-detail.html',
 			controller: 'EmployeeDetailCtrl',
@@ -29,8 +24,8 @@ angular.module('myApp', [
 		})
 		
 		.when('/groups/:username', {
-			templateUrl: 'partials/overview.html',
-			controller: 'OverviewCtrl',
+			templateUrl: 'partials/groups.html',
+			controller: 'GroupsCtrl',
 			access: { requiredAuthentication: true }
 		})
 		

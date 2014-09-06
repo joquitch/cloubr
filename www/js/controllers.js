@@ -13,7 +13,7 @@ angular.module('myApp.controllers', [])
         }
 		
     }])
-    .controller('OverviewCtrl', ['$scope', '$rootScope', '$routeParams', 'Groups', 
+    .controller('GroupsCtrl', ['$scope', '$rootScope', '$routeParams', 'Groups', 
 		function ($scope, $rootScope, $routeParams, Groups) {
 			$scope.menuActions = [
 				{text: 'Log out', onClick: $rootScope.logOut}
