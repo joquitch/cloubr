@@ -13,11 +13,13 @@ angular.module('myApp.controllers', [])
         }
 		
     }])
-    .controller('OverviewCtrl', ['$scope', '$rootScope',
-		function ($scope, $rootScope) {
+    .controller('OverviewCtrl', ['$scope', '$rootScope', '$routeParams', 'Groups', 
+		function ($scope, $rootScope, $routeParams, Groups) {
 			$scope.menuActions = [
 				{text: 'Log out', onClick: $rootScope.logOut}
 			];
+			
+			$scope.groups = Groups.query({username: $routeParams.username});
 		}
 	])
     .controller('EmployeeDetailCtrl', ['$scope', '$routeParams', 'Employee',
@@ -47,7 +49,7 @@ angular.module('myApp.controllers', [])
 					UserService.signIn(username, password).success(function(data) {
 						AuthenticationService.isAuthenticated = true;
 						$window.sessionStorage.token = data.token;
-						$location.path("/");
+						$location.path("/groups/" + username);
 					}).error(function(status, data) {
 						console.log(status);
 						console.log(data);

@@ -5,6 +5,10 @@ angular.module('myApp.restServices', ['ngResource'])
         function ($resource) {
             return $resource( options.api.base_url + '/employees/:employeeId', {});
         }])
+	.factory('Groups', ['$resource',
+        function ($resource) {
+            return $resource( options.api.base_url + '/groups/:username', {});
+        }])
 
     .factory('Report', ['$resource',
         function ($resource) {

@@ -11,6 +11,7 @@ var express = require('express'),
 var routes = {};
 routes.employees = require('./routes/employees.js');
 routes.users = require('./routes/users.js');
+routes.groups = require('./routes/groups.js');
 
 app.use(bodyParser());          // pull information from html in POST
 app.use(express.static(path.join(__dirname, '/www')));
@@ -25,6 +26,7 @@ app.all('*', function(req, res, next) {
 
 app.get('/employees', jwt({secret: secret.secretToken}), routes.employees.findAll);
 app.get('/employees/:id', jwt({secret: secret.secretToken}), routes.employees.findById);
+app.get('/groups/:username', jwt({secret: secret.secretToken}), routes.groups.findByUsername);
 
 app.post('/register', routes.users.register); 
 app.post('/signin', routes.users.signin);

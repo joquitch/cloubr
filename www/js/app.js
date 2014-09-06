@@ -28,6 +28,12 @@ angular.module('myApp', [
 			access: { requiredAuthentication: true }
 		})
 		
+		.when('/groups/:username', {
+			templateUrl: 'partials/overview.html',
+			controller: 'OverviewCtrl',
+			access: { requiredAuthentication: true }
+		})
+		
 		.when('/employees/:employeeId/reports', {
 			templateUrl: 'partials/report-list.html',
 			controller: 'ReportListCtrl',
@@ -44,7 +50,7 @@ angular.module('myApp', [
         })
 		
 		.otherwise({
-			redirectTo: '/overview'
+			redirectTo: '/register'
 		});
 }])
 
