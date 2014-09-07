@@ -16,7 +16,6 @@ mongoClient.open(function(err, mongoClient) {
 
 exports.findByUsername = function(req, res) {
     console.log(req.params);
-    var id = parseInt(req.params.id);
     console.log('findByUsername: ' + req.params.username);
     db.collection('groups', function(err, collection) {
         collection.find({
@@ -28,6 +27,17 @@ exports.findByUsername = function(req, res) {
             console.log(items);
             res.jsonp(items);
         });
+    });
+};
+
+exports.create = function(req, res) {
+    db.collection('groups', function(err, collection) {
+		
+        collection.insert({name: req.body.name, owner: 'sa'}, function(err, result){
+			console.log(err);
+			console.log(result[0]);
+			res.jsonp(result[0]);
+		});
     });
 };
  

@@ -45,6 +45,32 @@ angular.module('myApp.directives', [])
 		  },		  
 		  template: '<div class="header">{{title}}<cr-action-menu actions="actions"></cr-action-menu></div>'
 		};
+	})
+	.directive('crPopup', function() {
+		return  {
+			restrict: 'E',
+			replace: true,
+			transclude: true,
+			scope: {
+				title: '@',
+				crIf: '='
+			},
+			link: function(scope, element, attrs){
+				var $e = $(element),
+					$popup = $e.find('.cr-popup'),
+					$shadow = $e.find('.shadow');
+					
+				//$e.remove();
+				//$('body').append($e);
+				$popup.css('margin-top', -$popup.outerHeight()/2);
+				
+				$e.on('click', '.closePopup', function(){
+					scope.crIf = false;
+					scope.$digest();
+				});
+			},		  
+			template: '<div class="shadow" ng-show="crIf"><div class="transparentOverlay closePopup"></div><div class="cr-popup"><div class="popupHeader">{{title}}</div><div class="popupContent" ng-transclude></div></div></div>'
+		};
 	});
 	  
 	  

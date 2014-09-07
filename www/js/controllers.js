@@ -17,9 +17,17 @@ angular.module('myApp.controllers', [])
 		function ($scope, $rootScope, $routeParams, Groups) {
 			$scope.menuActions = [
 				{text: 'Log out', onClick: $rootScope.logOut}
-			];
-			
+			];	
 			$scope.groups = Groups.query({username: $routeParams.username});
+			
+			$scope.createNewGroup = function(name){
+				$scope.showNewGroupPopup = false;
+				
+				var newGroup = new Groups({name: name});
+				newGroup.$save(function(item, putResponseHeaders) {
+					$scope.groups.push(item);
+				  });
+			}
 		}
 	])
     .controller('EmployeeDetailCtrl', ['$scope', '$routeParams', 'Employee',

@@ -27,6 +27,7 @@ app.all('*', function(req, res, next) {
 app.get('/employees', jwt({secret: secret.secretToken}), routes.employees.findAll);
 app.get('/employees/:id', jwt({secret: secret.secretToken}), routes.employees.findById);
 app.get('/groups/:username', jwt({secret: secret.secretToken}), routes.groups.findByUsername);
+app.post('/groups', jwt({secret: secret.secretToken}), routes.groups.create);
 
 app.post('/register', routes.users.register); 
 app.post('/signin', routes.users.signin);

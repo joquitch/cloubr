@@ -1,2 +1,13 @@
 <cr-header title="Cloubr" actions="menuActions"></cr-header>
 <div ng-repeat="group in groups">{{group.name}}</div>
+<div class="footer">
+	<button class="center" ng-click="showNewGroupPopup = true">New Group</button>
+</div>
+
+<cr-popup cr-if="showNewGroupPopup" title="Create a new group">
+	<input ng-model="groupname" placeholder="name"/>
+	<div class="actionBar">
+		<button class="right" ng-click="createNewGroup(groupname)">Create</button>
+		<button class="secundary right closePopup" ng-click="showNewGroupPopup = false">Cancel</button>
+	</div>
+</cr-popup>

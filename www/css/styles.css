@@ -157,12 +157,71 @@
 		background: white;
 	}
 	
+	.footer{
+		width: 100%;
+		height: 48px;
+		background: #FFF;
+		position: fixed;
+		bottom: 0;
+	}
+	
 	.left{
 		float: left;
 	}
 	
 	.right{
 		float: right;
+	}
+	
+	.shadow {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: rgba(48, 48, 48, 0.58);
+		z-index: 100;
+		top: 0;
+		left: 0;
+		padding: 0 12px;
+	}
+	
+	.transparentOverlay{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	
+	.cr-popup{		
+		background: white;
+		padding: 4px;
+		margin: 4px;
+		border-radius: 3px;
+		position: relative;
+		top: 50%;
+	}
+	
+	.popupHeader{
+		padding: 4px;
+		margin: 4px;
+	}
+	
+	input{
+		margin: 4px 0;
+		padding: 8px;
+		border-radius: 3px;
+	}
+	
+	.actionBar{
+		overflow: hidden;
+	}
+	
+	.actionBar > button{
+		margin-bottom: 0;
+	}
+	
+	.popupContent{
+		padding: 4px 8px;
 	}
 	
 	button{
@@ -177,6 +236,20 @@
 	
 	button:active{
 		background: #2980b9;
+	}
+	
+	button.right{
+		margin-left: 8px;
+	}
+	
+	button.secundary{
+		background: #777;
+	}
+	
+	button.center{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;		
 	}
 	
 	.header:before{
