@@ -3,7 +3,7 @@
 var options = {};
 options.api = {};
 //options.api.base_url = 'http://frozen-stream-3247.herokuapp.com';
-options.api.base_url = 'http://localhost:5000';
+options.api.base_url = 'http://localhost:1761';
 
 angular.module('myApp', [
     'ngTouch',
@@ -26,6 +26,24 @@ angular.module('myApp', [
 		.when('/groups/:username', {
 			templateUrl: 'partials/groups.html',
 			controller: 'GroupsCtrl',
+			access: { requiredAuthentication: true }
+		})
+		
+		.when('/sessionsOverview/:username', {
+			templateUrl: 'partials/sessionsOverview.html',
+			controller: 'SessionsOverviewCtrl',
+			access: { requiredAuthentication: true }
+		})
+		
+		.when('/selectParticipants', {
+			templateUrl: 'partials/selectParticipants.html',
+			controller: 'SelectParticipantsCtrl',
+			access: { requiredAuthentication: true }
+		})
+		
+		.when('/newSession', {
+			templateUrl: 'partials/newSession.html',
+			controller: 'NewSessionCtrl',
 			access: { requiredAuthentication: true }
 		})
 		

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{c56aba85-b9b0-439d-b997-9aafb3b8276b}</ProjectGuid>
+        <ProjectHome />
+        <ProjectView>ShowAllFiles</ProjectView>
+        <StartupFile>server.js</StartupFile>
+        <WorkingDirectory>.</WorkingDirectory>
+        <OutputPath>.</OutputPath>
+        <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+        <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+        <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+    <ItemGroup>
+        <Content Include="package.json" />
+        <Compile Include="server.js" />
+        <Compile Include="config\mongo_database.js" />
+        <Compile Include="config\redis_database.js" />
+        <Compile Include="config\secret.js" />
+        <Compile Include="config\token_manager.js" />
+        <Compile Include="routes\employees.js" />
+        <Compile Include="routes\groups.js" />
+        <Compile Include="routes\sessions.js" />
+        <Compile Include="routes\users.js" />
+        <Content Include="www\index.html" />
+        <Content Include="www\splash.png" />
+        <Content Include="www\config.xml" />
+        <Content Include="www\css\styles.css" />
+        <Compile Include="www\js\app.js" />
+        <Compile Include="www\js\controllers.js" />
+        <Compile Include="www\js\directives.js" />
+        <Compile Include="www\js\rest-services.js" />
+        <Compile Include="www\lib\angular-animate.js" />
+        <Compile Include="www\lib\angular-resource.js" />
+        <Compile Include="www\lib\angular-route.js" />
+        <Compile Include="www\lib\angular-touch.js" />
+        <Compile Include="www\lib\angular.js" />
+        <Compile Include="www\lib\fastclick.js" />
+        <Compile Include="www\lib\jquery-2.1.1.min.js" />
+        <Content Include="www\partials\employee-detail.html" />
+        <Content Include="www\partials\groups.html" />
+        <Content Include="www\partials\logout.html" />
+        <Content Include="www\partials\newSession.html" />
+        <Content Include="www\partials\register.html" />
+        <Content Include="www\partials\report-list.html" />
+        <Content Include="www\partials\selectParticipants.html" />
+        <Content Include="www\partials\sessionsOverview.html" />
+        <Content Include="www\css\images\cloubr-logo.svg" />
+        <Content Include="www\splash\android\hdpi.png" />
+        <Content Include="www\splash\android\ldpi.png" />
+        <Content Include="www\splash\android\mdpi.png" />
+        <Content Include="www\splash\bb\splash.png" />
+        <Content Include="www\splash\ios\Default-Landscape.png" />
+        <Content Include="www\splash\ios\Default-Portrait.png" />
+        <Content Include="www\splash\ios\Default.png" />
+        <Content Include="www\splash\ios\Default_at_2x.png" />
+        <Content Include="www\splash\winphone\splash.jpg" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="config" />
+        <Folder Include="routes" />
+        <Folder Include="www" />
+        <Folder Include="www\css" />
+        <Folder Include="www\css\images" />
+        <Folder Include="www\js" />
+        <Folder Include="www\lib" />
+        <Folder Include="www\partials" />
+        <Folder Include="www\splash" />
+        <Folder Include="www\splash\android" />
+        <Folder Include="www\splash\bb" />
+        <Folder Include="www\splash\ios" />
+        <Folder Include="www\splash\winphone" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+    <ProjectExtensions>
+        <VisualStudio>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+            <WebProjectProperties>
+              <UseIIS>False</UseIIS>
+              <AutoAssignPort>True</AutoAssignPort>
+              <DevelopmentServerPort>0</DevelopmentServerPort>
+              <DevelopmentServerVPath>/</DevelopmentServerVPath>
+              <IISUrl>http://localhost:48022/</IISUrl>
+              <NTLMAuthentication>False</NTLMAuthentication>
+              <UseCustomServer>True</UseCustomServer>
+              <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+              <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+            </WebProjectProperties>
+          </FlavorProperties>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+            <WebProjectProperties>
+              <StartPageUrl>
+              </StartPageUrl>
+              <StartAction>CurrentPage</StartAction>
+              <AspNetDebugging>True</AspNetDebugging>
+              <SilverlightDebugging>False</SilverlightDebugging>
+              <NativeDebugging>False</NativeDebugging>
+              <SQLDebugging>False</SQLDebugging>
+              <ExternalProgram>
+              </ExternalProgram>
+              <StartExternalURL>
+              </StartExternalURL>
+              <StartCmdLineArguments>
+              </StartCmdLineArguments>
+              <StartWorkingDirectory>
+              </StartWorkingDirectory>
+              <EnableENC>False</EnableENC>
+              <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+            </WebProjectProperties>
+          </FlavorProperties>
+        </VisualStudio>
+    </ProjectExtensions>
+</Project>

@@ -1,0 +1,7 @@
+<cr-header title="Cloubr" actions="menuActions"></cr-header>
+<div class="sessionTile" ng-repeat="session in sessions">
+	<div class="sessionTileTitle">{{session.title}}</div>
+</div>
+<div class="footer">
+	<button class="center" ng-click="go('/newSession')">New Session</button>
+</div>

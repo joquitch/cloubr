@@ -1,0 +1,19 @@
+<div class="view withHeader withFooter">
+	<cr-header title="Create new session" actions="menuActions"></cr-header>
+
+	<div class="viewContent">
+		<div class="blockWhite">
+			<input placeholder="Title..." ng-model="session.title"/>
+			<input placeholder="Background..." ng-model="session.background"/>
+			<input placeholder="Question..." ng-model="session.question"/>
+			<div class="divider"></div>
+			<label>Deadline</label>
+			<input type="datetime-local" ng-model="session.deadline"/>
+		</div>
+	</div>
+
+	<div class="footer">
+		<button class="left" ng-click="go('/selectParticipants')"><i class="fa fa-users"></i></button>
+		<button class="right" ng-click="createSession(session)">Start</button>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<cr-header title="Select participants"></cr-header>
+<div class="subBar">
+	<input ng-model="search" placeholder="Search..."/>
+</div>
+
+<div class="content" ng-if="search.length">
+	<div class="user" ng-repeat="user in users | filter : search" ng-click="user.isSelected = !user.isSelected">
+		{{user.username}}
+		<i ng-if="user.isSelected" class="fa fa-check-circle userCheck"></i>
+	</div>
+</div>
+
+<div class="footer"><button class="right" ng-click="back()">Done</button></div>

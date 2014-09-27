@@ -30,6 +30,32 @@ angular.module('myApp.controllers', [])
 			}
 		}
 	])
+	.controller('SessionsOverviewCtrl', ['$scope', '$rootScope', '$routeParams', 'Session', 
+		function ($scope, $rootScope, $routeParams, Session) {
+			$scope.menuActions = [
+				{text: 'Log out', onClick: $rootScope.logOut}
+			];	
+			$scope.sessions = Session.query({username: $routeParams.username});
+		}
+	])
+	.controller('NewSessionCtrl', ['$scope', '$rootScope', '$routeParams', 'Session', 
+		function ($scope, $rootScope, $routeParams, Session) {
+    $scope.session = {};
+			$scope.createSession = function(session){
+				var newSession = new Session(session);
+				newSession.$save(function(item, putResponseHeaders) {
+					$rootScope.back();
+				  });
+			};
+		}
+	])
+	
+	.controller('SelectParticipantsCtrl', ['$scope', '$rootScope', '$routeParams', 'User', 
+		function ($scope, $rootScope, $routeParams, User) {
+			$scope.users = User.query();
+		}
+	])
+	
     .controller('EmployeeDetailCtrl', ['$scope', '$routeParams', 'Employee',
 		function ($scope, $routeParams, Employee) {
 			$scope.employee = Employee.get({employeeId: $routeParams.employeeId});
@@ -43,6 +69,16 @@ angular.module('myApp.controllers', [])
 	
 	.controller('UserCtrl', ['$scope', '$rootScope',  '$location', '$window', 'UserService', 'AuthenticationService',
 		function UserCtrl($scope, $rootScope, $location, $window, UserService, AuthenticationService) {
+			$scope.slide = '';
+			$rootScope.back = function() {
+			  $scope.slide = 'slide-right';
+			  $window.history.back();
+			}
+			$rootScope.go = function(path){
+			  $scope.slide = 'slide-left';
+			  $location.url(path);
+			}
+			
 			$scope.tabs = ["I'm new", 'Sign in'];
 			$scope.currentTab = $scope.tabs[0];
 			$scope.setCurrentTab = function (tab) {
@@ -57,7 +93,7 @@ angular.module('myApp.controllers', [])
 					UserService.signIn(username, password).success(function(data) {
 						AuthenticationService.isAuthenticated = true;
 						$window.sessionStorage.token = data.token;
-						$location.path("/groups/" + username);
+						$location.path("/sessionsOverview/" + username);
 					}).error(function(status, data) {
 						console.log(status);
 						console.log(data);
